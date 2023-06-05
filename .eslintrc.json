@@ -1,0 +1,179 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react-hooks", "jest"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": "./src"
+      }
+    },
+    "react": {
+      "version": "detect"
+    },
+    "next": {
+      "rootDir": "src/explore-education-statistics-frontend"
+    }
+  },
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/typescript",
+    "plugin:react-hooks/recommended",
+    "plugin:@next/next/recommended",
+    "prettier",
+    "prettier/prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_$" }
+    ],
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "class-methods-use-this": "off",
+    "import/extensions": "off",
+    "import/no-cycle": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-unresolved": "off",
+    "react/forbid-prop-types": "off",
+    "@next/next/no-html-link-for-pages": ["error", "src/pages"],
+    "react/function-component-definition": "off",
+    "import/no-import-module-exports": "off",
+    "no-promise-executor-return": "off",
+    "react/no-unstable-nested-components": "off",
+    "no-restricted-exports": [
+      "error",
+      {
+        "restrictedNamedExports": ["!default"]
+      }
+    ],
+    "react/no-unescaped-entities": [
+      "error",
+      {
+        "forbid": [
+          {
+            "char": ">",
+            "alternatives": ["&gt;"]
+          },
+          {
+            "char": "}",
+            "alternatives": ["&#125;"]
+          }
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
+    ],
+    "react/jsx-curly-newline": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": [
+      "error",
+      {
+        "html": "enforce",
+        "custom": "ignore"
+      }
+    ],
+    "react/jsx-wrap-multilines": ["error", { "prop": "ignore" }],
+    "react/require-default-props": "off",
+    "react/sort-comp": [
+      "error",
+      {
+        "order": [
+          "displayName",
+          "propTypes",
+          "contextTypes",
+          "childContextTypes",
+          "mixins",
+          "defaultProps",
+          "static-variables",
+          "static-methods",
+          "state",
+          "instance-variables",
+          "lifecycle",
+          "static-methods",
+          "getters",
+          "setters",
+          "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+          "instance-methods",
+          "everything-else",
+          "/^on.+$/",
+          "rendering"
+        ],
+        "groups": {
+          "lifecycle": [
+            "constructor",
+            "getDefaultProps",
+            "getInitialState",
+            "getChildContext",
+            "componentWillMount",
+            "componentDidMount",
+            "componentWillReceiveProps",
+            "shouldComponentUpdate",
+            "componentWillUpdate",
+            "componentDidUpdate",
+            "componentWillUnmount"
+          ],
+          "rendering": ["/^render.+$/", "render"]
+        }
+      }
+    ],
+    "react/state-in-constructor": "off",
+    "react/static-property-placement": ["error", "static public field"],
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "assert": "htmlFor"
+      }
+    ],
+    "no-console": "warn",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["draft", "acc"]
+      }
+    ],
+    "no-shadow": "off",
+    "no-use-before-define": "off",
+    "no-useless-constructor": "off",
+    "no-unreachable": "error",
+    "no-underscore-dangle": "error",
+    "valid-typeof": "error",
+    "getter-return": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react/require-render-return": "error",
+    "spaced-comment": ["warn", "always", { "markers": ["/"] }],
+    "@next/next/no-img-element": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.js"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "global-require": "off",
+        "import/no-dynamic-require": "off",
+        "no-console": "off"
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@common/*": [
+        "../../explore-education-statistics-common/src/*"
+      ],
+      "@common-test/*": [
+        "../../explore-education-statistics-common/test/*"
+      ],
+      "@frontend/*": [
+        "./*"
+      ],
+      "@frontend-test/*": [
+        "../test/*"
+      ]
+    },
+    "incremental": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}

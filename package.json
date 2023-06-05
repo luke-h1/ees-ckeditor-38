@@ -1,0 +1,83 @@
+{
+  "name": "explore-education-statistics",
+  "private": true,
+  "packageManager": "pnpm@8.6.0",
+  "dependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^10.5.4"
+  },
+  "engines": {
+    "node": "18.16.0",
+    "pnpm": "8.6.0"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "12.2.0",
+    "@types/jest": "^29.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.5",
+    "@typescript-eslint/parser": "^5.59.5",
+    "caniuse-lite": "^1.0.30001486",
+    "chalk": "^4.1.2",
+    "check-node-version": "^4.2.1",
+    "cross-spawn": "^7.0.3",
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "12.2.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-jest": "^27.2.1",
+    "prettier": "^2.8.8",
+    "scramjet": "^4.36.9",
+    "stylelint": "^15.6.1",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-sass-guidelines": "^10.0.0",
+    "stylelint-prettier": "^3.0.0",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "clean": "pnpm -r --parallel exec rm -rf node_modules && rm -rf node_modules",
+    "fix": "pnpm fix:js && pnpm fix:style",
+    "fix:js": "eslint --fix --ext .ts,.tsx,.js,.jsx src tests/performance-tests/src useful-scripts",
+    "fix:style": "stylelint --fix src/**/*.{scss,css}",
+    "format": "prettier --write \"{src,tests/performance-tests/src,useful-scripts}/**/*.{js,jsx,ts,tsx,css,scss,html}\"",
+    "format:check": "prettier --list-different \"{src,tests/performance-tests/src,useful-scripts}/**/*.{js,jsx,ts,tsx,css,scss,html}\"",
+    "format:robot": "python3 -m pipenv run robotidy --config tests/robot-tests/robotidy.toml tests/robot-tests",
+    "format:robot:check": "pnpm format:robot -- --check --diff",
+    "format:python": "python3 -m pipenv run flake8 tests && python3 -m pipenv run black tests && python3 -m pipenv run isort tests",
+    "format:python:check": "python3 -m pipenv run flake8 tests --diff && python3 -m pipenv run black tests --diff && python3 -m pipenv run isort tests --diff",
+    "lint": "pnpm lint:js && pnpm lint:style",
+    "lint:js": "eslint --ext .ts,.tsx,.js,.jsx src tests/performance-tests/src useful-scripts",
+    "lint:style": "stylelint src/**/*.{scss,css}",
+    "start": "node useful-scripts/run.js",
+    "start:azure": "cd \"C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\Storage Emulator\" && c:AzureStorageEmulator.exe start -inprocess",
+    "test": "pnpm -r --no-bail test",
+    "test:snapshot": "pnpm -r --no-bail test:snapshot",
+    "test:ci": "pnpm -r --no-bail test:ci",
+    "test:coverage": "pnpm -r --no-bail test:coverage",
+    "tsc": "pnpm -r --no-bail tsc",
+    "install:azure-tools": "pnpm install -g azure-functions-core-tools@4 --unsafe-perm true"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint"
+    ],
+    "*.{scss,css}": [
+      "stylelint"
+    ],
+    "*.{js,jsx,ts,tsx,css,scss,html}": [
+      "prettier --write"
+    ],
+    "*.robot": [
+      "pipenv run robotidy --config tests/robot-tests/robotidy.toml"
+    ],
+    "*.py": [
+      "pipenv run flake8",
+      "pipenv run black",
+      "pipenv run isort"
+    ]
+  }
+}
